@@ -259,9 +259,7 @@
       </div>
 
       <!-- Name -->
-      <h1 class="anim-init animate-fade-up-delay-1 font-display font-bold text-white mb-2" style="font-size: clamp(2.2rem, 6vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.1;">
-        Dev Patel
-      </h1>
+      <h1 id="typing-headline" class="font-display font-bold text-white mb-2" style="font-size: clamp(2.2rem, 6vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.1; opacity: 1;"></h1>
 
       <!-- Title -->
       <p class="anim-init animate-fade-up-delay-1 font-display font-medium mb-6" style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: #1BAAB8; letter-spacing: 0.01em;">
@@ -688,6 +686,54 @@
       </p>
     </div>
   </footer>
+
+  <style>
+    #typing-headline .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.85em;
+      background: #1BAAB8;
+      margin-left: 3px;
+      vertical-align: middle;
+      border-radius: 1px;
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const el = document.getElementById('typing-headline');
+      const text = 'Dev Patel';
+      const charDelay = 50;   // ms between each character
+      const startDelay = 400; // ms before typing begins
+
+      // Insert cursor element
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      el.appendChild(cursor);
+
+      let i = 0;
+      setTimeout(function type() {
+        if (i < text.length) {
+          // Insert next character before the cursor
+          el.insertBefore(document.createTextNode(text[i]), cursor);
+          i++;
+          setTimeout(type, charDelay);
+        } else {
+          // Remove cursor after typing finishes (500ms pause then fade out)
+          setTimeout(() => {
+            cursor.style.transition = 'opacity 0.4s ease';
+            cursor.style.opacity = '0';
+            setTimeout(() => cursor.remove(), 400);
+          }, 500);
+        }
+      }, startDelay);
+    })();
+  </script>
 
 </body>
 </html>
