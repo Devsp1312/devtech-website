@@ -214,6 +214,7 @@
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#problems" class="nav-link">Problems I Fix</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
 
@@ -235,6 +236,7 @@
         <a href="#services" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Services</a>
         <a href="#problems" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Problems I Fix</a>
         <a href="#about" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">About</a>
+        <a href="#testimonials" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Reviews</a>
         <a href="#contact" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
         <a href="#contact" class="btn-teal inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-display font-semibold text-sm text-white" onclick="document.getElementById('menu-toggle').checked=false">Get in Touch</a>
       </div>
@@ -566,6 +568,51 @@
   </section>
 
   <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section id="testimonials" style="background: #F5F7FA; border-top: 1px solid #EEF0F4;">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+
+      <div class="text-center mb-14">
+        <div class="teal-bar mx-auto mb-5"></div>
+        <h2 class="font-display font-bold mb-4" style="font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; color: #0A1018; line-height: 1.2;">
+          What Clients Say
+        </h2>
+      </div>
+
+      <div class="flex justify-center">
+        <!-- Testimonial card -->
+        <div class="bg-white rounded-2xl p-10 max-w-2xl w-full" style="box-shadow: 0 4px 24px rgba(27,170,184,0.10), 0 1px 4px rgba(0,0,0,0.06); border: 1px solid rgba(27,170,184,0.08);">
+          <!-- Quote mark -->
+          <div class="mb-6" style="color: #1BAAB8; font-size: 4rem; line-height: 1; font-family: Georgia, serif; opacity: 0.4;">&ldquo;</div>
+          <p class="font-body mb-8" style="font-size: 1.1rem; line-height: 1.8; color: #2D3748;">
+            Dev is really good and reliable. Whenever there's a tech issue, he handles it quickly and gets it done right. You can count on him.
+          </p>
+          <!-- Attribution -->
+          <div class="flex items-center gap-4">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center font-display font-bold text-white text-sm" style="background: linear-gradient(135deg, #1BAAB8, #0F7080);">
+              JB
+            </div>
+            <div>
+              <p class="font-display font-semibold" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Joe Basano</p>
+              <p class="font-body text-sm" style="color: #718096;">Supervisor / Manager</p>
+            </div>
+            <!-- Stars -->
+            <div class="ml-auto flex gap-1">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1BAAB8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1BAAB8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1BAAB8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1BAAB8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1BAAB8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
        CONTACT
   ============================================================ -->
   <section id="contact" class="relative grain overflow-hidden" style="background: linear-gradient(160deg, #0E1520 0%, #152030 60%, #0A1018 100%);">
@@ -577,9 +624,25 @@
       <h2 class="font-display font-bold text-white mb-4" style="font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: -0.03em; line-height: 1.2;">
         Ready to Solve Your Tech Problems?
       </h2>
-      <p class="font-body mb-12 mx-auto" style="font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.6); max-width: 480px;">
+      <p class="font-body mb-8 mx-auto" style="font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.6); max-width: 480px;">
         Reach out via email or give me a call. I'm available for on-site visits and remote sessions.
       </p>
+
+      <!-- Service area + response time pills -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-body text-sm" style="background: rgba(27,170,184,0.12); border: 1px solid rgba(27,170,184,0.22); color: #3EC6D4;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          In-Person: NJ · NY · PA
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-body text-sm" style="background: rgba(27,170,184,0.12); border: 1px solid rgba(27,170,184,0.22); color: #3EC6D4;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Remote: Anywhere
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-body text-sm" style="background: rgba(27,170,184,0.12); border: 1px solid rgba(27,170,184,0.22); color: #3EC6D4;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Responds within 12 hrs
+        </span>
+      </div>
 
       <!-- Contact buttons -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -602,10 +665,26 @@
        FOOTER
   ============================================================ -->
   <footer style="background: #0A1018; border-top: 1px solid rgba(27,170,184,0.08);">
-    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
       <img src="brand_assets/Brand logo.png" alt="Dev Tech" class="h-8 w-auto opacity-70" />
-      <p class="font-body text-sm" style="color: rgba(255,255,255,0.35);">
-        &copy; 2025 Dev Patel · Dev Tech. All rights reserved.
+
+      <!-- Social links -->
+      <div class="flex items-center gap-5">
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/devpatel2" target="_blank" rel="noopener" class="flex items-center gap-2 font-body text-sm transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded" style="color: rgba(255,255,255,0.45); opacity: 0.7;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <span style="color: rgba(255,255,255,0.15);">·</span>
+        <!-- Personal website -->
+        <a href="https://devpatel2.dev" target="_blank" rel="noopener" class="flex items-center gap-2 font-body text-sm transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded" style="color: rgba(255,255,255,0.45); opacity: 0.7;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          devpatel2.dev
+        </a>
+      </div>
+
+      <p class="font-body text-sm" style="color: rgba(255,255,255,0.25);">
+        &copy; 2025 Dev Patel · Dev Tech.
       </p>
     </div>
   </footer>
