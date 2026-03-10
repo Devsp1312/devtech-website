@@ -57,7 +57,13 @@
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #0A1018; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A1018;
+      font-feature-settings: "kern" 1, "liga" 1, "cv11" 1;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
     /* Grain texture overlay */
     .grain::before {
@@ -79,16 +85,16 @@
         linear-gradient(160deg, #0E1520 0%, #152030 50%, #0A1018 100%);
     }
 
+    /* Squircle clip utility */
+    .squircle {
+      clip-path: url(#squircle);
+    }
+
     /* Card shadow — layered, teal-tinted */
     .card-shadow {
       box-shadow:
-        0 4px 24px rgba(27,170,184,0.12),
-        0 1px 4px rgba(0,0,0,0.10);
-    }
-    .card-shadow:hover {
-      box-shadow:
-        0 8px 40px rgba(27,170,184,0.20),
-        0 2px 8px rgba(0,0,0,0.12);
+        0 4px 24px rgba(27,170,184,0.10),
+        0 1px 4px rgba(0,0,0,0.08);
     }
 
     /* Button teal glow */
@@ -156,26 +162,38 @@
 
     /* Service card */
     .service-card {
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
     }
     .service-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 48px rgba(27,170,184,0.22), 0 2px 8px rgba(0,0,0,0.10);
+    }
+
+    /* Testimonial card */
+    .testimonial-card {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(27,170,184,0.18), 0 2px 8px rgba(0,0,0,0.08);
     }
 
     /* Icon container */
     .icon-wrap {
-      background: linear-gradient(135deg, rgba(27,170,184,0.12) 0%, rgba(27,170,184,0.06) 100%);
-      border: 1px solid rgba(27,170,184,0.18);
+      background: linear-gradient(135deg, rgba(27,170,184,0.15) 0%, rgba(27,170,184,0.07) 100%);
+      clip-path: url(#squircle);
     }
 
     /* Opacity 0 initial for animated elements */
     .anim-init { opacity: 0; }
 
     /* Problem item hover */
-  .problem-item:hover {
-    background: rgba(27,170,184,0.04) !important;
-    border-color: rgba(27,170,184,0.25) !important;
-  }
+    .problem-item:hover {
+      transform: translateY(-3px);
+      background: rgba(27,170,184,0.04) !important;
+      border-color: rgba(27,170,184,0.25) !important;
+      box-shadow: 0 8px 28px rgba(27,170,184,0.14), 0 1px 4px rgba(0,0,0,0.07);
+    }
 
   /* Teal accent line */
     .teal-bar {
@@ -199,10 +217,19 @@
 </head>
 <body class="antialiased text-white">
 
+  <!-- Hidden SVG defs: iOS-accurate quintic superellipse squircle -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+    <defs>
+      <clipPath id="squircle" clipPathUnits="objectBoundingBox">
+        <path d="M0.5,0 C0.745,0 0.899,0 0.965,0.066 C1,0.101 1,0.255 1,0.5 C1,0.745 1,0.899 0.965,0.965 C0.899,1 0.745,1 0.5,1 C0.255,1 0.101,1 0.066,0.965 C0,0.899 0,0.745 0,0.5 C0,0.255 0,0.101 0.066,0.066 C0.101,0 0.255,0 0.5,0Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+
   <!-- ============================================================
        NAV
   ============================================================ -->
-  <header class="fixed top-0 left-0 right-0 z-50" style="backdrop-filter: blur(14px); background: rgba(10,16,24,0.82); border-bottom: 1px solid rgba(27,170,184,0.1);">
+  <header class="fixed top-0 left-0 right-0 z-50" id="site-header" style="backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); background: rgba(8,13,20,0.72); border-bottom: 1px solid rgba(27,170,184,0.12); box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 0 rgba(27,170,184,0.06); transition: border-color 0.3s ease, box-shadow 0.3s ease;">
     <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <!-- Logo -->
       <a href="#home" class="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded-md">
@@ -267,7 +294,7 @@
       </p>
 
       <!-- Tagline -->
-      <p class="anim-init animate-fade-up-delay-2 font-body mx-auto mb-10 text-white/60" style="font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.75; max-width: 540px;">
+      <p class="anim-init animate-fade-up-delay-2 font-body mx-auto mb-10 text-white/60" style="font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.8; max-width: 540px;">
         Bringing clear, reliable tech support to homes and businesses — from Wi-Fi and printers to cameras and beyond.
       </p>
 
@@ -303,7 +330,7 @@
         <h2 class="font-display font-bold mb-4" style="font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; color: #0A1018; line-height: 1.2;">
           What I Do
         </h2>
-        <p class="font-body mx-auto" style="font-size: 1.05rem; line-height: 1.75; color: #4A5568; max-width: 520px;">
+        <p class="font-body mx-auto" style="font-size: 1.05rem; line-height: 1.8; color: #4A5568; max-width: 520px;">
           Reliable, personalized tech support — delivered in plain language, without the jargon.
         </p>
       </div>
@@ -313,13 +340,13 @@
 
         <!-- Card 1 -->
         <div class="service-card card-shadow bg-white rounded-2xl p-8" style="border: 1px solid rgba(27,170,184,0.08);">
-          <div class="icon-wrap w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+          <div class="icon-wrap w-14 h-14 flex items-center justify-center mb-6">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#1BAAB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <h3 class="font-display font-semibold mb-3" style="font-size: 1.15rem; letter-spacing: -0.02em; color: #0A1018;">Troubleshooting &amp; Repairs</h3>
-          <p class="font-body" style="font-size: 0.95rem; line-height: 1.75; color: #718096;">
+          <p class="font-body" style="font-size: 0.95rem; line-height: 1.8; color: #718096;">
             On-site and remote support for printers, Wi-Fi routers, home cameras, and entertainment systems. Fast diagnosis, lasting fixes.
           </p>
           <div class="mt-6 flex flex-wrap gap-2">
@@ -332,13 +359,13 @@
 
         <!-- Card 2 -->
         <div class="service-card card-shadow bg-white rounded-2xl p-8" style="border: 1px solid rgba(27,170,184,0.08);">
-          <div class="icon-wrap w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+          <div class="icon-wrap w-14 h-14 flex items-center justify-center mb-6">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" stroke="#1BAAB8" stroke-width="1.6" stroke-linecap="round"/>
             </svg>
           </div>
           <h3 class="font-display font-semibold mb-3" style="font-size: 1.15rem; letter-spacing: -0.02em; color: #0A1018;">Tech Setup &amp; Configuration</h3>
-          <p class="font-body" style="font-size: 0.95rem; line-height: 1.75; color: #718096;">
+          <p class="font-body" style="font-size: 0.95rem; line-height: 1.8; color: #718096;">
             Technology recommendations tailored to your specific needs, configured properly the first time — improving satisfaction and reducing frustration.
           </p>
           <div class="mt-6 flex flex-wrap gap-2">
@@ -350,13 +377,13 @@
 
         <!-- Card 3 -->
         <div class="service-card card-shadow bg-white rounded-2xl p-8" style="border: 1px solid rgba(27,170,184,0.08);">
-          <div class="icon-wrap w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+          <div class="icon-wrap w-14 h-14 flex items-center justify-center mb-6">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3v-3z" stroke="#1BAAB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <h3 class="font-display font-semibold mb-3" style="font-size: 1.15rem; letter-spacing: -0.02em; color: #0A1018;">Plain-Language Explanations</h3>
-          <p class="font-body" style="font-size: 0.95rem; line-height: 1.75; color: #718096;">
+          <p class="font-body" style="font-size: 0.95rem; line-height: 1.8; color: #718096;">
             Complex tech concepts translated into language anyone can follow — empowering students, professors, and everyday users to feel confident with their technology.
           </p>
           <div class="mt-6 flex flex-wrap gap-2">
@@ -382,7 +409,7 @@
         <h2 class="font-display font-bold mb-4" style="font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; color: #0A1018; line-height: 1.2;">
           Common Problems I Fix
         </h2>
-        <p class="font-body mx-auto" style="font-size: 1.05rem; line-height: 1.75; color: #4A5568; max-width: 500px;">
+        <p class="font-body mx-auto" style="font-size: 1.05rem; line-height: 1.8; color: #4A5568; max-width: 500px;">
           Sound familiar? These are the issues I resolve every day — quickly, clearly, and without the runaround.
         </p>
       </div>
@@ -391,93 +418,93 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
         <!-- Problem item -->
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01M4.929 12.929a9.5 9.5 0 0114.142 0M1.5 9.5a14 14 0 0121 0" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Wi-Fi won't connect or keeps dropping</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">Router resets, dead zones, wrong password loops</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">Router resets, dead zones, wrong password loops</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17 17H17.01M17 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2z" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round"/><path d="M7 7h4M7 11h2" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Printer is offline or won't print</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">Driver issues, queue stuck, wireless setup problems</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">Driver issues, queue stuck, wireless setup problems</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Home camera not recording or connecting</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">App setup, motion detection, cloud storage config</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">App setup, motion detection, cloud storage config</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Computer running slow or freezing</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">Startup bloat, storage issues, overheating, malware</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">Startup bloat, storage issues, overheating, malware</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">TV / soundbar won't connect or no audio</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">HDMI issues, Bluetooth pairing, input source errors</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">HDMI issues, Bluetooth pairing, input source errors</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">New phone or tablet setup</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">Data transfer, account migration, app configuration</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">Data transfer, account migration, app configuration</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Locked out of account or device</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">Password recovery, 2FA issues, Apple ID / Google account</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">Password recovery, 2FA issues, Apple ID / Google account</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Smart home devices not responding</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">Alexa, Google Home, smart lights, thermostat setup</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">Alexa, Google Home, smart lights, thermostat setup</p>
           </div>
         </div>
 
-        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: border-color 0.2s ease, background 0.2s ease;">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(27,170,184,0.1);">
+        <div class="problem-item flex items-start gap-4 p-5 rounded-xl" style="background: #F8FAFB; border: 1px solid #E8ECF0; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;">
+          <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center squircle" style="background: rgba(27,170,184,0.12);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke="#1BAAB8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <p class="font-display font-semibold mb-1" style="font-size: 0.95rem; color: #1A202C; letter-spacing: -0.01em;">Error messages you don't understand</p>
-            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.6;">Windows/Mac errors, software crashes, update failures</p>
+            <p class="font-body" style="font-size: 0.85rem; color: #718096; line-height: 1.7;">Windows/Mac errors, software crashes, update failures</p>
           </div>
         </div>
 
@@ -513,19 +540,19 @@
           <ul class="space-y-5">
             <li class="flex gap-4 items-start">
               <div class="about-dot mt-2"></div>
-              <p class="font-body" style="font-size: 0.97rem; line-height: 1.75; color: #4A5568;">
+              <p class="font-body" style="font-size: 0.97rem; line-height: 1.8; color: #4A5568;">
                 <strong class="font-display font-semibold" style="color: #1A202C;">Served students, professors, and private clients</strong> — providing reliable on-site and remote support that actually resolves the issue.
               </p>
             </li>
             <li class="flex gap-4 items-start">
               <div class="about-dot mt-2"></div>
-              <p class="font-body" style="font-size: 0.97rem; line-height: 1.75; color: #4A5568;">
+              <p class="font-body" style="font-size: 0.97rem; line-height: 1.8; color: #4A5568;">
                 <strong class="font-display font-semibold" style="color: #1A202C;">Tailored recommendations, not generic fixes</strong> — technology configured to individual needs, improving satisfaction and adoption.
               </p>
             </li>
             <li class="flex gap-4 items-start">
               <div class="about-dot mt-2"></div>
-              <p class="font-body" style="font-size: 0.97rem; line-height: 1.75; color: #4A5568;">
+              <p class="font-body" style="font-size: 0.97rem; line-height: 1.8; color: #4A5568;">
                 <strong class="font-display font-semibold" style="color: #1A202C;">Communication-first approach</strong> — every interaction is clear, jargon-free, and focused on what the client actually needs to know.
               </p>
             </li>
@@ -582,9 +609,9 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Joe Basano -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
+        <div class="testimonial-card bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
           <div class="mb-4" style="color: #1BAAB8; font-size: 3rem; line-height: 1; font-family: Georgia, serif; opacity: 0.35;">&ldquo;</div>
-          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.75; color: #2D3748;">Dev is really good and reliable. Whenever there's a tech issue, he handles it quickly and gets it done right. You can count on him.</p>
+          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.8; color: #2D3748;">Dev is really good and reliable. Whenever there's a tech issue, he handles it quickly and gets it done right. You can count on him.</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white text-xs flex-shrink-0" style="background: linear-gradient(135deg, #1BAAB8, #0F7080);">JB</div>
             <div class="flex-1 min-w-0">
@@ -602,9 +629,9 @@
         </div>
 
         <!-- Rohan Shah -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
+        <div class="testimonial-card bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
           <div class="mb-4" style="color: #1BAAB8; font-size: 3rem; line-height: 1; font-family: Georgia, serif; opacity: 0.35;">&ldquo;</div>
-          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.75; color: #2D3748;">My Wi-Fi kept dropping every few hours and I had no idea why. Dev came over, diagnosed a router configuration issue in minutes, and fixed it on the spot. Haven't had a single dropout since.</p>
+          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.8; color: #2D3748;">My Wi-Fi kept dropping every few hours and I had no idea why. Dev came over, diagnosed a router configuration issue in minutes, and fixed it on the spot. Haven't had a single dropout since.</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white text-xs flex-shrink-0" style="background: linear-gradient(135deg, #2A7FBA, #1A5A8A);">RS</div>
             <div class="flex-1 min-w-0">
@@ -622,9 +649,9 @@
         </div>
 
         <!-- Shrey Patel -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
+        <div class="testimonial-card bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
           <div class="mb-4" style="color: #1BAAB8; font-size: 3rem; line-height: 1; font-family: Georgia, serif; opacity: 0.35;">&ldquo;</div>
-          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.75; color: #2D3748;">Our office printer had been showing "offline" for weeks and none of us could figure it out. Dev sorted it remotely in under 20 minutes — driver conflict, completely fixed. Super knowledgeable.</p>
+          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.8; color: #2D3748;">Our office printer had been showing "offline" for weeks and none of us could figure it out. Dev sorted it remotely in under 20 minutes — driver conflict, completely fixed. Super knowledgeable.</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white text-xs flex-shrink-0" style="background: linear-gradient(135deg, #7B5EA7, #5A3D8A);">SP</div>
             <div class="flex-1 min-w-0">
@@ -642,9 +669,9 @@
         </div>
 
         <!-- Jagteshwar -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
+        <div class="testimonial-card bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
           <div class="mb-4" style="color: #1BAAB8; font-size: 3rem; line-height: 1; font-family: Georgia, serif; opacity: 0.35;">&ldquo;</div>
-          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.75; color: #2D3748;">My laptop was freezing constantly — I thought I needed a new one. Dev cleaned it up, removed background programs I didn't even know were running, and now it's faster than it's been in years. Saved me a lot of money.</p>
+          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.8; color: #2D3748;">My laptop was freezing constantly — I thought I needed a new one. Dev cleaned it up, removed background programs I didn't even know were running, and now it's faster than it's been in years. Saved me a lot of money.</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white text-xs flex-shrink-0" style="background: linear-gradient(135deg, #2E8B6A, #1A6A4A);">JG</div>
             <div class="flex-1 min-w-0">
@@ -662,9 +689,9 @@
         </div>
 
         <!-- Tilak Patel -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
+        <div class="testimonial-card bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
           <div class="mb-4" style="color: #1BAAB8; font-size: 3rem; line-height: 1; font-family: Georgia, serif; opacity: 0.35;">&ldquo;</div>
-          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.75; color: #2D3748;">Dev set up three security cameras around my house and got them all connected to my phone. He walked me through the app step by step so I actually know how to use it. Great service, very patient.</p>
+          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.8; color: #2D3748;">Dev set up three security cameras around my house and got them all connected to my phone. He walked me through the app step by step so I actually know how to use it. Great service, very patient.</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white text-xs flex-shrink-0" style="background: linear-gradient(135deg, #C0622A, #8A3D10);">TP</div>
             <div class="flex-1 min-w-0">
@@ -682,9 +709,9 @@
         </div>
 
         <!-- Shivam -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
+        <div class="testimonial-card bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
           <div class="mb-4" style="color: #1BAAB8; font-size: 3rem; line-height: 1; font-family: Georgia, serif; opacity: 0.35;">&ldquo;</div>
-          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.75; color: #2D3748;">Switching to a new phone is always a nightmare for me. Dev transferred everything — contacts, photos, apps — without losing a single thing. He even set up my email accounts before he left. 10/10.</p>
+          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.8; color: #2D3748;">Switching to a new phone is always a nightmare for me. Dev transferred everything — contacts, photos, apps — without losing a single thing. He even set up my email accounts before he left. 10/10.</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white text-xs flex-shrink-0" style="background: linear-gradient(135deg, #1BAAB8, #0F7080);">SH</div>
             <div class="flex-1 min-w-0">
@@ -702,9 +729,9 @@
         </div>
 
         <!-- Emily -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col md:col-span-2 lg:col-span-1" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
+        <div class="testimonial-card bg-white rounded-2xl p-7 flex flex-col md:col-span-2 lg:col-span-1" style="box-shadow: 0 4px 24px rgba(27,170,184,0.08), 0 1px 4px rgba(0,0,0,0.05); border: 1px solid rgba(27,170,184,0.08);">
           <div class="mb-4" style="color: #1BAAB8; font-size: 3rem; line-height: 1; font-family: Georgia, serif; opacity: 0.35;">&ldquo;</div>
-          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.75; color: #2D3748;">I could never get my TV, soundbar, and streaming stick to all work together. Dev came in and had everything running perfectly within an hour — and explained what each cable and setting did so I'm not lost if something changes.</p>
+          <p class="font-body flex-1 mb-6" style="font-size: 0.97rem; line-height: 1.8; color: #2D3748;">I could never get my TV, soundbar, and streaming stick to all work together. Dev came in and had everything running perfectly within an hour — and explained what each cable and setting did so I'm not lost if something changes.</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white text-xs flex-shrink-0" style="background: linear-gradient(135deg, #B06AB3, #7A3A8A);">EM</div>
             <div class="flex-1 min-w-0">
@@ -738,7 +765,7 @@
       <h2 class="font-display font-bold text-white mb-4" style="font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: -0.03em; line-height: 1.2;">
         Ready to Solve Your Tech Problems?
       </h2>
-      <p class="font-body mb-8 mx-auto" style="font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.6); max-width: 480px;">
+      <p class="font-body mb-8 mx-auto" style="font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.6); max-width: 480px;">
         Reach out via email or give me a call. I'm available for on-site visits and remote sessions.
       </p>
 
@@ -804,6 +831,10 @@
   </footer>
 
   <style>
+    #site-header.scrolled {
+      border-bottom-color: rgba(27,170,184,0.22) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 16px rgba(0,0,0,0.25) !important;
+    }
     #typing-headline .cursor {
       display: inline-block;
       width: 3px;
@@ -819,6 +850,16 @@
       50%       { opacity: 0; }
     }
   </style>
+
+  <script>
+    // Nav glassmorphism scroll enhancement
+    (function () {
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+    })();
+  </script>
 
   <script>
     (function () {
