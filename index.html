@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dev Patel — Technical Consultant | Dev Tech</title>
+  <meta name="description" content="Clear, reliable on-site and remote tech support for homes and businesses — Wi-Fi, printers, cameras, computer tune-ups, and personalized buying advice." />
+  <meta property="og:title" content="Dev Patel — Technical Consultant | Dev Tech" />
+  <meta property="og:description" content="Bringing clear, reliable tech support to homes and businesses — from Wi-Fi and printers to cameras and beyond." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="brand_assets/Brand logo.png" />
+  <link rel="icon" type="image/png" href="brand_assets/Brand logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
@@ -213,6 +219,223 @@
       margin-top: 6px;
       box-shadow: 0 0 8px rgba(27,170,184,0.5);
     }
+
+    /* Scrollytelling Section */
+    #deep-dive {
+      background: #0A1018;
+      color: #fff;
+    }
+    .dd-sticky-container {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      width: 100%;
+    }
+    .dd-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      filter: brightness(0.82) contrast(1.06) saturate(0.92);
+    }
+    .dd-beat {
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      transform: translateY(-50%) translateY(40px);
+      width: 100%;
+      max-width: 560px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding: 2rem 2.25rem;
+      border-radius: 1.25rem;
+      background: rgba(10, 16, 24, 0.68);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(27, 170, 184, 0.16);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .dd-beat h2 {
+      text-shadow: 0 2px 24px rgba(0,0,0,0.7);
+    }
+    .dd-beat p {
+      color: rgba(255,255,255,0.78) !important;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .dd-beat.active {
+      opacity: 1;
+      transform: translateY(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    .dd-content-left {
+      left: 8%;
+      text-align: left;
+    }
+    .dd-content-right {
+      right: 8%;
+      text-align: right;
+    }
+    .dd-content-center {
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(40px);
+      text-align: center;
+    }
+    .dd-beat.dd-content-center.active {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+    .dd-accent {
+      color: #1BAAB8;
+    }
+    .dd-accent-cyan {
+      color: #3EC6D4;
+    }
+    .dd-hud {
+      position: absolute;
+      bottom: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 15;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: rgba(10, 16, 24, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(27, 170, 184, 0.18);
+    }
+    .dd-progress-track {
+      width: 110px;
+      height: 3px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.14);
+      overflow: hidden;
+    }
+    .dd-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #1BAAB8, #3EC6D4);
+      border-radius: 9999px;
+      transition: width 0.1s linear;
+    }
+    .dd-skip-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s ease, transform 0.15s ease;
+    }
+    .dd-skip-btn:hover {
+      color: #3EC6D4;
+      transform: translateY(-1px);
+    }
+    .dd-skip-btn:active {
+      transform: translateY(0);
+    }
+    .dd-skip-btn:focus-visible {
+      outline: 2px solid #3EC6D4;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Contact form controls */
+    .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(27, 170, 184, 0.2);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+    .form-input:hover {
+      border-color: rgba(27, 170, 184, 0.4);
+    }
+    .form-input:focus-visible {
+      outline: none;
+      border-color: #3EC6D4;
+      background: rgba(27, 170, 184, 0.06);
+      box-shadow: 0 0 0 3px rgba(62, 198, 212, 0.18);
+    }
+    .form-input option {
+      background: #0E1520;
+      color: #ffffff;
+    }
+    .mode-pill {
+      border: 1px solid rgba(27, 170, 184, 0.24);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.7);
+      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+    .mode-pill:hover {
+      border-color: rgba(27, 170, 184, 0.55);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .mode-pill:active {
+      transform: translateY(0);
+    }
+    .mode-pill:focus-visible {
+      outline: 2px solid #3EC6D4;
+      outline-offset: 2px;
+    }
+    .mode-pill.selected {
+      background: rgba(27, 170, 184, 0.18);
+      border-color: #3EC6D4;
+      color: #3EC6D4;
+    }
+
+    @media (max-width: 768px) {
+      .dd-beat {
+        left: 5% !important;
+        right: 5% !important;
+        text-align: center !important;
+        transform: translate(0, -50%) translateY(30px) !important;
+        width: 90%;
+        padding: 1.5rem 1.25rem;
+      }
+      .dd-beat.active {
+        transform: translate(0, -50%) translateY(0) !important;
+      }
+      .dd-beat.dd-content-center {
+        left: 50% !important;
+        transform: translate(-50%, -50%) translateY(30px) !important;
+      }
+      .dd-beat.dd-content-center.active {
+        transform: translate(-50%, -50%) translateY(0) !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .dd-beat, .anim-init {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
   </style>
 </head>
 <body class="antialiased text-white">
@@ -241,6 +464,7 @@
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#buying" class="nav-link">Buying Advice</a></li>
         <li><a href="#problems" class="nav-link">Problems I Fix</a></li>
+        <li><a href="#deep-dive" class="nav-link">Deep Dive</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#testimonials" class="nav-link">Reviews</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -264,6 +488,7 @@
         <a href="#services" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Services</a>
         <a href="#buying" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Buying Advice</a>
         <a href="#problems" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Problems I Fix</a>
+        <a href="#deep-dive" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Deep Dive</a>
         <a href="#about" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">About</a>
         <a href="#testimonials" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Reviews</a>
         <a href="#contact" class="nav-link font-display font-medium" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
@@ -327,7 +552,7 @@
   <section id="services" style="background: #F5F7FA;">
     <div class="max-w-6xl mx-auto px-6 py-24">
       <!-- Section header -->
-      <div class="text-center mb-16">
+      <div class="reveal text-center mb-16">
         <div class="teal-bar mx-auto mb-5"></div>
         <h2 class="font-display font-bold mb-4" style="font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; color: #0A1018; line-height: 1.2;">
           What I Do
@@ -407,7 +632,7 @@
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 60% at 100% 50%, rgba(27,170,184,0.1) 0%, transparent 65%), radial-gradient(ellipse 30% 40% at 0% 80%, rgba(27,170,184,0.06) 0%, transparent 60%);"></div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         <!-- Left: text + CTA -->
         <div>
@@ -481,7 +706,7 @@
     <div class="max-w-6xl mx-auto px-6 py-24">
 
       <!-- Section header -->
-      <div class="text-center mb-14">
+      <div class="reveal text-center mb-14">
         <div class="teal-bar mx-auto mb-5"></div>
         <h2 class="font-display font-bold mb-4" style="font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; color: #0A1018; line-height: 1.2;">
           Common Problems I Fix
@@ -600,11 +825,97 @@
   </section>
 
   <!-- ============================================================
+       ENGINEERING DEEP DIVE (SCROLLYTELLING)
+  ============================================================ -->
+  <section id="deep-dive" style="height: 380vh;">
+    <div class="dd-sticky-container">
+      <canvas id="dd-canvas" class="dd-canvas" aria-label="Interactive laptop hardware disassembly animation"></canvas>
+
+      <!-- Overlay: top/bottom fade into #0A1018 -->
+      <div class="absolute inset-0 z-[2] pointer-events-none"
+           style="background: linear-gradient(to top, rgba(10,16,24,0.94) 0%, transparent 28%, transparent 72%, rgba(10,16,24,0.94) 100%);">
+      </div>
+      <!-- Overlay: edge vignette (all 4 sides) -->
+      <div class="absolute inset-0 z-[2] pointer-events-none"
+           style="background: radial-gradient(ellipse 70% 65% at 50% 48%, transparent 0%, transparent 45%, rgba(10,16,24,0.55) 75%, rgba(10,16,24,0.92) 100%);">
+      </div>
+
+      <!-- Beat 1: Hero (0-16%) -->
+      <div class="dd-beat dd-content-center" data-start="0" data-end="0.16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 font-body text-xs font-medium uppercase" style="background: rgba(27,170,184,0.14); border: 1px solid rgba(27,170,184,0.28); color: #3EC6D4; letter-spacing: 0.1em;">
+          Hardware &amp; Diagnostics
+        </div>
+        <h2 class="font-display font-bold text-white mb-4" style="font-size: clamp(2rem, 4.8vw, 3.4rem); letter-spacing: -0.04em; line-height: 1.1;">
+          Dev Tech: <span class="dd-accent-cyan">Precision Care</span><br>for Your Digital Life.
+        </h2>
+        <p class="font-body text-white/60 mx-auto" style="font-size: clamp(0.95rem, 1.8vw, 1.15rem); line-height: 1.65; max-width: 460px;">
+          Beyond quick fixes. I restore speed, reliability, and peace of mind—on-site or remote.
+        </p>
+      </div>
+
+      <!-- Beat 2: Core Performance (16-42%) -->
+      <div class="dd-beat dd-content-left" data-start="0.16" data-end="0.42">
+        <h2 class="font-display font-bold text-white mb-3" style="font-size: clamp(1.75rem, 3.8vw, 2.75rem); letter-spacing: -0.03em; line-height: 1.12;">
+          Core Performance <br><span class="dd-accent">Optimization.</span>
+        </h2>
+        <p class="font-body text-white/60" style="font-size: clamp(0.95rem, 1.5vw, 1.08rem); line-height: 1.65; max-width: 420px;">
+          Slowdowns, overheating, and startup bloat solved. I diagnose hardware bottlenecks and tune your system to run smoothly again.
+        </p>
+      </div>
+
+      <!-- Beat 3: Power & Connectivity (42-66%) -->
+      <div class="dd-beat dd-content-right" data-start="0.42" data-end="0.66" style="margin-left: auto;">
+        <h2 class="font-display font-bold text-white mb-3" style="font-size: clamp(1.75rem, 3.8vw, 2.75rem); letter-spacing: -0.03em; line-height: 1.12;">
+          Reliable Power <br><span class="dd-accent-cyan">&amp; Connectivity.</span>
+        </h2>
+        <p class="font-body text-white/60" style="font-size: clamp(0.95rem, 1.5vw, 1.08rem); line-height: 1.65; max-width: 420px; margin-left: auto;">
+          Battery health checks, charging diagnostics, and rock-solid Wi-Fi &amp; peripheral setups—so you stay productive without the tether.
+        </p>
+      </div>
+
+      <!-- Beat 4: Human Interface (66-86%) -->
+      <div class="dd-beat dd-content-left" data-start="0.66" data-end="0.86">
+        <h2 class="font-display font-bold text-white mb-3" style="font-size: clamp(1.75rem, 3.8vw, 2.75rem); letter-spacing: -0.03em; line-height: 1.12;">
+          Every Device <br><span class="dd-accent">You Touch.</span>
+        </h2>
+        <p class="font-body text-white/60" style="font-size: clamp(0.95rem, 1.5vw, 1.08rem); line-height: 1.65; max-width: 420px;">
+          From sluggish laptops and printers to smart TVs, cameras, and phone migrations—clear, jargon-free support for your entire setup.
+        </p>
+      </div>
+
+      <!-- Beat 5: Reassembly & CTA (86-100%) -->
+      <div class="dd-beat dd-content-center" data-start="0.86" data-end="1.0">
+        <h2 class="font-display font-bold text-white mb-7" style="font-size: clamp(2rem, 4.8vw, 3.4rem); letter-spacing: -0.04em; line-height: 1.1;">
+          Any Problem. <span class="dd-accent-cyan">One Solution.</span>
+        </h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto">
+          <a href="#contact" class="btn-teal inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-display font-semibold text-white text-base" style="letter-spacing: -0.01em;">
+            Book a Session
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#services" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-display font-semibold text-base" style="letter-spacing: -0.01em;">
+            View Services
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom HUD: Progress + Skip -->
+      <div class="dd-hud" aria-label="Animation progress">
+        <span id="dd-step-label" class="font-body text-xs text-white/70" style="min-width: 34px;">0%</span>
+        <div class="dd-progress-track">
+          <div id="dd-progress-fill" class="dd-progress-fill"></div>
+        </div>
+        <a href="#about" class="dd-skip-btn">Skip &darr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        ABOUT
   ============================================================ -->
   <section id="about" class="bg-white">
     <div class="max-w-6xl mx-auto px-6 py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         <!-- Left -->
         <div>
@@ -675,7 +986,7 @@
   <section id="testimonials" style="background: #F5F7FA; border-top: 1px solid #EEF0F4;">
     <div class="max-w-6xl mx-auto px-6 py-24">
 
-      <div class="text-center mb-14">
+      <div class="reveal text-center mb-14">
         <div class="teal-bar mx-auto mb-5"></div>
         <h2 class="font-display font-bold mb-4" style="font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; color: #0A1018; line-height: 1.2;">
           What Clients Say
@@ -862,12 +1173,86 @@
         </span>
       </div>
 
-      <!-- Contact buttons -->
+      <!-- Interactive Intake Form -->
+      <div class="reveal text-left rounded-2xl p-6 sm:p-8 mb-10" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(27,170,184,0.18); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+        <form id="contact-intake-form" class="space-y-5" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="intake-name" class="block font-display text-xs font-medium uppercase tracking-wider text-white/70 mb-2">Your Name</label>
+              <input id="intake-name" name="name" type="text" required placeholder="Alex Morgan" class="form-input" />
+            </div>
+            <div>
+              <label for="intake-contact" class="block font-display text-xs font-medium uppercase tracking-wider text-white/70 mb-2">Email or Phone</label>
+              <input id="intake-contact" name="contact" type="text" required placeholder="alex@email.com or (555) 123-4567" class="form-input" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+            <div>
+              <label for="intake-topic" class="block font-display text-xs font-medium uppercase tracking-wider text-white/70 mb-2">What do you need help with?</label>
+              <select id="intake-topic" name="topic" class="form-input">
+                <option value="Troubleshooting &amp; Repair">Troubleshooting &amp; Repair</option>
+                <option value="Computer Running Slow / Tune-Up">Computer Running Slow / Tune-Up</option>
+                <option value="Wi-Fi / Network Setup">Wi-Fi / Network Setup</option>
+                <option value="Printer / Camera / TV &amp; Audio">Printer / Camera / TV &amp; Audio</option>
+                <option value="New Phone / Device Setup">New Phone / Device Setup</option>
+                <option value="Buying Advice &amp; Recommendations">Buying Advice &amp; Recommendations</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <span class="block font-display text-xs font-medium uppercase tracking-wider text-white/70 mb-2">Preferred Format</span>
+              <div class="grid grid-cols-2 gap-2" role="group" aria-label="Preferred support format">
+                <button type="button" class="mode-pill selected px-3 py-2.5 rounded-xl font-display text-xs font-semibold" data-mode="On-Site (NJ/NY/PA)">On-Site</button>
+                <button type="button" class="mode-pill px-3 py-2.5 rounded-xl font-display text-xs font-semibold" data-mode="Remote (Anywhere)">Remote</button>
+              </div>
+              <input type="hidden" id="intake-mode" name="mode" value="On-Site (NJ/NY/PA)" />
+            </div>
+          </div>
+
+          <div>
+            <label for="intake-details" class="block font-display text-xs font-medium uppercase tracking-wider text-white/70 mb-2">Brief Description</label>
+            <textarea id="intake-details" name="details" rows="3" required placeholder="Tell me the device, what's happening, and your general availability..." class="form-input"></textarea>
+          </div>
+
+          <p id="intake-error" class="hidden font-body text-sm" style="color: #F87171;">Please fill in your name, contact info, and a short description.</p>
+
+          <button type="submit" class="btn-teal w-full inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-display font-semibold text-white text-base" style="letter-spacing: -0.01em;">
+            Prepare Request &amp; Send
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+
+        <!-- Confirmation state -->
+        <div id="intake-confirmation" class="hidden text-center py-4 space-y-4">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mx-auto" style="background: rgba(27,170,184,0.16); color: #3EC6D4;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-white text-lg">Your request is ready to send</h3>
+          <p class="font-body text-sm text-white/60 max-w-md mx-auto">
+            Click below to open your email app pre-filled with your details, or copy the summary to text/email directly.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <a id="intake-mailto-link" href="mailto:devpatel0276@gmail.com" class="btn-teal inline-flex items-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-white text-sm">
+              Open Pre-Filled Email
+            </a>
+            <button type="button" id="intake-copy-btn" class="btn-outline inline-flex items-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-sm">
+              Copy Summary
+            </button>
+            <button type="button" id="intake-reset-btn" class="font-body text-xs text-white/50 hover:text-white px-3 py-2">
+              Edit Details
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Contact buttons -->
+      <p class="font-body text-xs uppercase tracking-widest text-white/40 mb-4">Or reach out directly</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
         <!-- Email -->
-        <a href="mailto:devpatel0276@gmail.com" class="btn-teal inline-flex items-center gap-3 px-8 py-4 rounded-xl font-display font-semibold text-white text-base" style="letter-spacing: -0.01em; min-width: 220px; justify-content: center;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Send an Email
+        <a href="mailto:devpatel0276@gmail.com" class="btn-outline inline-flex items-center gap-3 px-8 py-4 rounded-xl font-display font-semibold text-base" style="letter-spacing: -0.01em; min-width: 220px; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#3EC6D4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          devpatel0276@gmail.com
         </a>
 
         <!-- Call -->
@@ -902,7 +1287,7 @@
       </div>
 
       <p class="font-body text-sm" style="color: rgba(255,255,255,0.25);">
-        &copy; 2025 Dev Patel · Dev Tech.
+        &copy; 2026 Dev Patel · Dev Tech.
       </p>
     </div>
   </footer>
@@ -966,6 +1351,217 @@
           }, 500);
         }
       }, startDelay);
+    })();
+  </script>
+
+  <script>
+    // Scrollytelling Canvas Logic (240 JPG frames with progressive preloading)
+    (function () {
+      const section = document.getElementById('deep-dive');
+      const canvas = document.getElementById('dd-canvas');
+      const beats = document.querySelectorAll('.dd-beat');
+      const progressFill = document.getElementById('dd-progress-fill');
+      const stepLabel = document.getElementById('dd-step-label');
+      if (!section || !canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      const frameCount = 240;
+      const images = new Array(frameCount);
+      let currentFrame = 0;
+      let targetFrame = 0;
+      let rafId = null;
+
+      function frameUrl(index) {
+        const num = String(index + 1).padStart(3, '0');
+        return `brand_assets/Laptop%20over%20view/ezgif-frame-${num}.jpg`;
+      }
+
+      function drawFrame(index) {
+        const img = images[index];
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.fillStyle = '#0A1018';
+        ctx.fillRect(0, 0, w, h);
+
+        const imgRatio = img.naturalWidth / img.naturalHeight;
+        const ctxRatio = w / h;
+        let drawW, drawH, offsetX = 0, offsetY = 0;
+
+        if (imgRatio > ctxRatio) {
+          drawH = h;
+          drawW = drawH * imgRatio;
+          offsetX = (w - drawW) / 2;
+        } else {
+          drawW = w;
+          drawH = drawW / imgRatio;
+          offsetY = (h - drawH) / 2;
+        }
+        ctx.drawImage(img, offsetX, offsetY, drawW, drawH);
+      }
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+        canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+        drawFrame(Math.round(currentFrame));
+      }
+
+      // Load keyframe 0 immediately, then progressively load remaining frames
+      function loadFrame(idx) {
+        if (images[idx]) return;
+        const img = new Image();
+        img.src = frameUrl(idx);
+        img.onload = () => {
+          if (idx === Math.round(currentFrame) || idx === 0) {
+            drawFrame(idx);
+          }
+        };
+        images[idx] = img;
+      }
+
+      loadFrame(0);
+      // Preload every 4th frame first for instant coarse scrubbing, then fill in
+      function preloadAll() {
+        for (let step = 4; step >= 1; step = step === 4 ? 1 : 0) {
+          for (let i = 0; i < frameCount; i += step) {
+            loadFrame(i);
+          }
+          if (step === 1) break;
+        }
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(preloadAll, { timeout: 1200 });
+      } else {
+        setTimeout(preloadAll, 300);
+      }
+
+      function tickLerp() {
+        const diff = targetFrame - currentFrame;
+        if (Math.abs(diff) > 0.15) {
+          currentFrame += diff * 0.25;
+          drawFrame(Math.round(currentFrame));
+          rafId = requestAnimationFrame(tickLerp);
+        } else {
+          currentFrame = targetFrame;
+          drawFrame(Math.round(currentFrame));
+          rafId = null;
+        }
+      }
+
+      function updateOnScroll() {
+        const rect = section.getBoundingClientRect();
+        const totalScroll = Math.max(1, section.offsetHeight - window.innerHeight);
+        let progress = -rect.top / totalScroll;
+        progress = Math.max(0, Math.min(1, progress));
+
+        targetFrame = progress * (frameCount - 1);
+        if (!rafId) {
+          rafId = requestAnimationFrame(tickLerp);
+        }
+
+        if (progressFill) progressFill.style.width = `${Math.round(progress * 100)}%`;
+        if (stepLabel) stepLabel.textContent = `${Math.round(progress * 100)}%`;
+
+        beats.forEach(beat => {
+          const start = parseFloat(beat.dataset.start);
+          const end = parseFloat(beat.dataset.end);
+          beat.classList.toggle('active', progress >= start - 0.015 && progress <= end + 0.015);
+        });
+      }
+
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+      window.addEventListener('scroll', updateOnScroll, { passive: true });
+      resizeCanvas();
+      updateOnScroll();
+    })();
+  </script>
+
+  <script>
+    // Scroll-reveal observer for sections
+    (function () {
+      const reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length || !('IntersectionObserver' in window)) {
+        reveals.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => io.observe(el));
+    })();
+  </script>
+
+  <script>
+    // Contact intake form handler
+    (function () {
+      const form = document.getElementById('contact-intake-form');
+      const confirmation = document.getElementById('intake-confirmation');
+      const errorEl = document.getElementById('intake-error');
+      const modeInput = document.getElementById('intake-mode');
+      const modePills = document.querySelectorAll('.mode-pill');
+      const mailtoLink = document.getElementById('intake-mailto-link');
+      const copyBtn = document.getElementById('intake-copy-btn');
+      const resetBtn = document.getElementById('intake-reset-btn');
+      if (!form) return;
+
+      let lastSummary = '';
+
+      modePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          modePills.forEach(p => p.classList.remove('selected'));
+          pill.classList.add('selected');
+          modeInput.value = pill.dataset.mode;
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('intake-name').value.trim();
+        const contact = document.getElementById('intake-contact').value.trim();
+        const topic = document.getElementById('intake-topic').value;
+        const mode = modeInput.value;
+        const details = document.getElementById('intake-details').value.trim();
+
+        if (!name || !contact || !details) {
+          errorEl.classList.remove('hidden');
+          return;
+        }
+        errorEl.classList.add('hidden');
+
+        const subject = encodeURIComponent(`[Dev Tech] ${topic} (${mode}) — ${name}`);
+        lastSummary = `Name: ${name}\nContact: ${contact}\nService: ${topic}\nFormat: ${mode}\n\nDetails:\n${details}`;
+        mailtoLink.href = `mailto:devpatel0276@gmail.com?subject=${subject}&body=${encodeURIComponent(lastSummary)}`;
+
+        form.classList.add('hidden');
+        confirmation.classList.remove('hidden');
+      });
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(lastSummary);
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => { copyBtn.textContent = 'Copy Summary'; }, 2000);
+          } catch {
+            copyBtn.textContent = 'Copy Failed';
+          }
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          confirmation.classList.add('hidden');
+          form.classList.remove('hidden');
+        });
+      }
     })();
   </script>
 
